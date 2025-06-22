@@ -8,6 +8,7 @@
         content="Igor Rodrigues - Líder em Produto e Tecnologia com mais de 15 anos de experiência em transformação digital e estratégia de produto.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://igorfarodrigues.github.io">
+    <link rel="sitemap" type="application/xml" href="sitemap.xml">
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico">
@@ -30,72 +31,155 @@
 
     <title>Igor Rodrigues | Líder em Produto e Tecnologia</title>
 
-    <!-- Preload crítico -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        accent: {
+                            50: '#f0f9ff',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                    },
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                maxWidth: '65ch',
+                                color: '#333',
+                                lineHeight: '1.7',
+                            },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <style>
         :root {
-            --primary-gradient: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            --transition-standard: 0.3s ease;
+            --text-color: #111827;
+            --bg-color: #ffffff;
+            --bg-accent: #f9fafb;
+            --border-color: #e5e7eb;
+            --accent-color: #0ea5e9;
         }
 
-        /* Garantir que estilos de foco sejam visíveis para acessibilidade */
+        /* Estilo global */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Acessibilidade */
         *:focus-visible {
-            outline: 2px solid #3b82f6;
+            outline: 2px solid var(--accent-color);
             outline-offset: 2px;
         }
 
-        .gradient-text {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
+        /* Animações sutis */
         .fade-in {
-            animation: fadeIn 1.5s ease-in-out;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* Divisores */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 3rem 0;
+        }
+
+        /* Links e botões */
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        a:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* Imagem de perfil */
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 2rem;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .avatar {
+                width: 220px;
+                height: 220px;
             }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
-        .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Conteúdo principal */
+        .container {
+            width: 100%;
+            max-width: 42rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        /* Lista de habilidades e experiências */
+        .experience-item:not(:last-child) {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
         }
 
-        /* Melhorias de acessibilidade para navegação móvel */
-        .mobile-menu {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+        .skill-item {
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .scroll-smooth {
-            scroll-behavior: smooth;
+        .skill-item:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
         }
     </style>
 </head>
 
-<body class="bg-gray-50 font-sans antialiased text-gray-800 scroll-smooth">
+<body class="bg-white font-sans antialiased text-gray-900">
     <!-- Schema.org markup usando JSON-LD -->
     <script type="application/ld+json">
     {
@@ -109,512 +193,345 @@
         },
         "url": "https://igorfarodrigues.github.io",
         "sameAs": [
-            "https://linkedin.com/in/igorfarodrigues"
+            "https://linkedin.com/in/igorfarodrigues",
+            "https://twitter.com/igorfarodrigues",
+            "https://github.com/igorfarodrigues"
         ],
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "São Paulo",
             "addressCountry": "Brazil"
-        }
+        },
+        "description": "Líder em Produto e Tecnologia com mais de 15 anos de experiência em transformação digital e estratégia de produto."
     }
     </script>
 
-    <div class="min-h-screen flex flex-col">
-        <!-- Anúncio de skip navigation para acessibilidade -->
-        <a href="#main-content"
-            class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-blue-600 focus:text-white focus:z-50">
-            Pular para o conteúdo principal
-        </a>
+    <!-- Skip navigation para acessibilidade -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-accent-600 focus:text-white focus:z-50">
+        Pular para o conteúdo principal
+    </a>
 
-        <!-- Header -->
-        <header
-            class="py-6 px-4 sm:px-6 lg:px-8 sticky top-0 bg-gray-50/90 backdrop-blur-sm z-40 border-b border-gray-100">
-            <div class="max-w-5xl mx-auto flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold gradient-text" aria-label="Igor Rodrigues - Início">Igor
-                    Rodrigues</a>
-
-                <nav class="hidden md:flex space-x-8" aria-label="Navegação principal">
-                    <a href="#about" class="font-medium hover:text-blue-500 transition-colors">Sobre</a>
-                    <a href="#experience" class="font-medium hover:text-blue-500 transition-colors">Experiência</a>
-                    <a href="#skills" class="font-medium hover:text-blue-500 transition-colors">Habilidades</a>
-                    <a href="#contact" class="font-medium hover:text-blue-500 transition-colors">Contato</a>
-                </nav>
-
-                <button class="md:hidden text-gray-600 focus:outline-none" aria-expanded="false"
-                    aria-controls="mobile-menu" aria-label="Menu de navegação">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+    <main id="main-content" class="container py-16 md:py-24">
+        <!-- Seção de Perfil / Hero -->
+        <section class="text-center mb-16 md:mb-24 fade-in">
+            <img src="profile.jpg" alt="Igor Rodrigues - Líder em Produto e Tecnologia" 
+                class="avatar" loading="lazy"
+                onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%230ea5e9\'><path d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z\'/></svg>'">
+            
+            <h1 class="text-3xl md:text-5xl font-bold mb-5 text-balance">Igor Rodrigues</h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed text-balance">
+                Chief Product & Technology Officer
+            </p>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed text-balance">
+                Transformando negócios através de tecnologia, estratégia de produto e inovação digital.
+            </p>
+            
+            <div class="flex justify-center space-x-4 pt-4">
+                <a href="https://linkedin.com/in/igorfarodrigues" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center text-gray-600 hover:text-accent-600 transition-colors"
+                    aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="https://twitter.com/igorfarodrigues" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center text-gray-600 hover:text-accent-600 transition-colors"
+                    aria-label="Twitter">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
+                <a href="https://github.com/igorfarodrigues" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center text-gray-600 hover:text-accent-600 transition-colors"
+                    aria-label="GitHub">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
             </div>
+        </section>
 
-            <!-- Menu móvel -->
-            <div id="mobile-menu" class="mobile-menu opacity-0 invisible fixed inset-0 bg-gray-900/50 z-50">
-                <div
-                    class="absolute right-0 top-0 h-full w-64 bg-white shadow-lg p-6 transform translate-x-full transition-transform duration-300 ease-in-out">
-                    <div class="flex justify-between items-center mb-8">
-                        <span class="font-bold text-lg">Menu</span>
-                        <button aria-label="Fechar menu" class="text-gray-500 hover:text-gray-700">
-                            <i class="fas fa-times text-xl"></i>
-                        </button>
+        <div class="divider"></div>
+        
+        <!-- Sobre Mim -->
+        <section class="mb-16 md:mb-24 fade-in delay-1">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">Sobre</h2>
+            <div class="prose max-w-none">
+                <p class="text-lg mb-5 leading-relaxed">
+                    Executivo experiente com mais de 15 anos de atuação em tecnologia, gestão de produto e transformação digital. Apaixonado por construir equipes de alto desempenho e entregar soluções inovadoras que impulsionem o crescimento dos negócios.
+                </p>
+                <p class="text-lg mb-5 leading-relaxed">
+                    Minha expertise abrange estratégia de produto, metodologias ágeis, computação em nuvem e plataformas digitais. Prospero em ambientes que desafiam o status quo e buscam melhoria contínua.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-accent-500 mr-3"></i>
+                        <span>São Paulo, Brasil</span>
                     </div>
-                    <nav class="flex flex-col space-y-4" aria-label="Menu móvel">
-                        <a href="#about" class="py-2 px-4 hover:bg-gray-100 rounded-md transition-colors">Sobre</a>
-                        <a href="#experience"
-                            class="py-2 px-4 hover:bg-gray-100 rounded-md transition-colors">Experiência</a>
-                        <a href="#skills"
-                            class="py-2 px-4 hover:bg-gray-100 rounded-md transition-colors">Habilidades</a>
-                        <a href="#contact" class="py-2 px-4 hover:bg-gray-100 rounded-md transition-colors">Contato</a>
-                    </nav>
+                    <div class="flex items-center">
+                        <i class="fas fa-briefcase text-accent-500 mr-3"></i>
+                        <span>+15 anos de experiência</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-graduation-cap text-accent-500 mr-3"></i>
+                        <span>Engenharia da Computação</span>
+                    </div>
                 </div>
             </div>
-        </header>
+        </section>
 
-        <main id="main-content">
-            <!-- Hero Section -->
-            <section aria-labelledby="hero-heading" class="flex-grow flex items-center py-24 px-4 sm:px-6 lg:px-8">
-                <div class="max-w-5xl mx-auto text-center fade-in">
-                    <h1 id="hero-heading" class="text-4xl md:text-6xl font-bold mb-6">
-                        <span class="gradient-text">Produto & Tecnologia</span><br>
-                        Liderança Executiva
-                    </h1>
-                    <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Transformando negócios através de tecnologia, estratégia de produto e inovação digital.
+        <div class="divider"></div>
+
+        <!-- Experiência -->
+        <section id="experience" class="mb-16 md:mb-24 fade-in delay-2">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">Experiência</h2>
+            
+            <div class="space-y-10">
+                <!-- Cargo atual -->
+                <article class="experience-item">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Chief Product & Technology Officer</h3>
+                            <div class="flex items-center mb-4">
+                                <span class="font-medium">Grupo Boticário</span>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <time datetime="2021" class="text-gray-600">2021 - Presente</time>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Liderando transformação digital, estratégia de produto e inovação tecnológica para uma das maiores empresas de beleza do Brasil.
                     </p>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <a href="#contact"
-                            class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-medium hover:opacity-90 transition-opacity">
-                            Entre em Contato
-                        </a>
-                        <a href="#experience"
-                            class="px-6 py-3 border border-gray-300 rounded-full font-medium hover:bg-gray-100 transition-colors">
-                            Ver Experiência
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- About Section -->
-            <section id="about" aria-labelledby="about-heading" class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-                <div class="max-w-5xl mx-auto">
-                    <h2 id="about-heading" class="text-3xl font-bold mb-16 text-center">Sobre Mim</h2>
-                    <div class="flex flex-col md:flex-row items-center gap-12">
-                        <div class="w-full md:w-1/3 flex justify-center">
-                            <div
-                                class="w-64 h-64 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 overflow-hidden border-4 border-white shadow-lg">
-                                <!-- Placeholder/imagem de perfil -->
-                                <img src="profile.jpg" alt="Igor Rodrigues, Líder em Produto e Tecnologia"
-                                    class="w-full h-full object-cover" loading="lazy"
-                                    onerror="this.onerror=null; this.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl text-blue-500\'><i class=\'fas fa-user\'></i></div>'">
-                            </div>
-                        </div>
-                        <div class="w-full md:w-2/3">
-                            <p class="text-lg mb-6">
-                                Executivo experiente com mais de 15 anos de atuação em tecnologia, gestão de produto e
-                                transformação digital. Apaixonado por construir equipes de alto desempenho e entregar
-                                soluções inovadoras que impulsionem o crescimento dos negócios.
-                            </p>
-                            <p class="text-lg mb-8">
-                                Minha expertise abrange estratégia de produto, metodologias ágeis, computação em nuvem e
-                                plataformas digitais. Prospero em ambientes que desafiam o status quo e buscam melhoria
-                                contínua.
-                            </p>
-                            <div class="flex flex-wrap gap-6">
-                                <div class="flex items-center">
-                                    <i class="fas fa-map-marker-alt text-blue-500 mr-3"></i>
-                                    <span>São Paulo, Brasil</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-briefcase text-purple-500 mr-3"></i>
-                                    <span>+15 anos de experiência</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-graduation-cap text-green-500 mr-3"></i>
-                                    <span>Engenharia da Computação</span>
-                                </div>
+                    
+                    <ul class="space-y-2 text-gray-700 pl-0 list-none">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent-500 mt-1 mr-3"></i>
+                            <span>Supervisão de mais de 200 profissionais nas equipes de produto, engenharia e dados</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent-500 mt-1 mr-3"></i>
+                            <span>Condução do desenvolvimento de plataformas omnichannel e crescimento do ecossistema digital</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent-500 mt-1 mr-3"></i>
+                            <span>Implementação de metodologias ágeis em escala por toda a organização</span>
+                        </li>
+                    </ul>
+                </article>
+                
+                <!-- Cargo anterior 1 -->
+                <article class="experience-item">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Head de Produtos Digitais</h3>
+                            <div class="flex items-center mb-4">
+                                <span class="font-medium">Natura & Co</span>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <time datetime="2018" class="text-gray-600">2018 - 2021</time>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <!-- Experience Section -->
-            <section id="experience" aria-labelledby="experience-heading" class="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
-                <div class="max-w-5xl mx-auto">
-                    <h2 id="experience-heading" class="text-3xl font-bold mb-16 text-center">Jornada Profissional</h2>
-
-                    <!-- Timeline de experiência -->
-                    <div class="space-y-8">
-                        <!-- Cargo atual -->
-                        <article class="card-hover transition-all duration-300 bg-white p-8 rounded-xl shadow-sm">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                                <h3 class="text-2xl font-bold">Chief Product & Technology Officer</h3>
-                                <time datetime="2021" class="text-blue-600 font-medium mt-2 md:mt-0">2021 -
-                                    Presente</time>
-                            </div>
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                                    <i class="fas fa-building text-blue-500 text-xl"></i>
-                                </div>
-                                <span class="font-medium text-lg">Grupo Boticário</span>
-                            </div>
-                            <p class="text-gray-600 mb-5 text-lg">
-                                Liderando transformação digital, estratégia de produto e inovação tecnológica para uma
-                                das maiores empresas de beleza do Brasil.
-                            </p>
-                            <ul class="list-none pl-0 space-y-2 text-gray-600">
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                    <span>Supervisão de mais de 200 profissionais nas equipes de produto, engenharia e
-                                        dados</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                    <span>Condução do desenvolvimento de plataformas omnichannel e crescimento do
-                                        ecossistema digital</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                    <span>Implementação de metodologias ágeis em escala por toda a organização</span>
-                                </li>
-                            </ul>
-                        </article>
-
-                        <!-- Cargos anteriores -->
-                        <article class="card-hover transition-all duration-300 bg-white p-8 rounded-xl shadow-sm">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                                <h3 class="text-2xl font-bold">Head de Produtos Digitais</h3>
-                                <time datetime="2018" class="text-purple-600 font-medium mt-2 md:mt-0">2018 -
-                                    2021</time>
-                            </div>
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
-                                    <i class="fas fa-shopping-bag text-purple-500 text-xl"></i>
-                                </div>
-                                <span class="font-medium text-lg">Natura & Co</span>
-                            </div>
-                            <p class="text-gray-600 text-lg">
-                                Liderei estratégia e execução de produtos digitais para as plataformas globais de
-                                e-commerce e digital da Natura.
-                            </p>
-                        </article>
-
-                        <article class="card-hover transition-all duration-300 bg-white p-8 rounded-xl shadow-sm">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                                <h3 class="text-2xl font-bold">Diretor de Produto</h3>
-                                <time datetime="2016" class="text-green-600 font-medium mt-2 md:mt-0">2016 - 2018</time>
-                            </div>
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
-                                    <i class="fas fa-mobile-alt text-green-500 text-xl"></i>
-                                </div>
-                                <span class="font-medium text-lg">Movile</span>
-                            </div>
-                            <p class="text-gray-600 text-lg">
-                                Dirigi o desenvolvimento de produtos para plataformas móveis atendendo milhões de
-                                usuários em toda a América Latina.
-                            </p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills Section -->
-            <section id="skills" aria-labelledby="skills-heading" class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-                <div class="max-w-5xl mx-auto">
-                    <h2 id="skills-heading" class="text-3xl font-bold mb-16 text-center">Competências Principais</h2>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Produto -->
-                        <article
-                            class="card-hover h-full transition-all duration-300 bg-gray-50 p-8 rounded-xl shadow-sm">
-                            <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
-                                <i class="fas fa-box-open text-blue-500 text-2xl" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-4">Estratégia de Produto</h3>
-                            <p class="text-gray-600">
-                                Definição de visão de produto, roadmap e planos de execução alinhados aos objetivos de
-                                negócio e necessidades dos usuários.
-                            </p>
-                        </article>
-
-                        <!-- Tecnologia -->
-                        <article
-                            class="card-hover h-full transition-all duration-300 bg-gray-50 p-8 rounded-xl shadow-sm">
-                            <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-6">
-                                <i class="fas fa-server text-purple-500 text-2xl" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-4">Liderança em Tecnologia</h3>
-                            <p class="text-gray-600">
-                                Construção de arquiteturas escaláveis, soluções em nuvem e equipes de engenharia de alto
-                                desempenho.
-                            </p>
-                        </article>
-
-                        <!-- Digital -->
-                        <article
-                            class="card-hover h-full transition-all duration-300 bg-gray-50 p-8 rounded-xl shadow-sm">
-                            <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
-                                <i class="fas fa-globe text-green-500 text-2xl" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-4">Transformação Digital</h3>
-                            <p class="text-gray-600">
-                                Condução de mudança organizacional através da adoção de tecnologia e inovação digital.
-                            </p>
-                        </article>
-
-                        <!-- Agile -->
-                        <article
-                            class="card-hover h-full transition-all duration-300 bg-gray-50 p-8 rounded-xl shadow-sm">
-                            <div class="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center mb-6">
-                                <i class="fas fa-tasks text-yellow-500 text-2xl" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-4">Metodologias Ágeis</h3>
-                            <p class="text-gray-600">
-                                Implementação de frameworks Scrum, Kanban e SAFe para melhorar a eficiência de entrega.
-                            </p>
-                        </article>
-
-                        <!-- Data -->
-                        <article
-                            class="card-hover h-full transition-all duration-300 bg-gray-50 p-8 rounded-xl shadow-sm">
-                            <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-6">
-                                <i class="fas fa-chart-line text-red-500 text-2xl" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-4">Decisões Data-Driven</h3>
-                            <p class="text-gray-600">
-                                Alavancagem de analytics e insights para informar estratégias de produto e negócio.
-                            </p>
-                        </article>
-
-                        <!-- Team -->
-                        <article
-                            class="card-hover h-full transition-all duration-300 bg-gray-50 p-8 rounded-xl shadow-sm">
-                            <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center mb-6">
-                                <i class="fas fa-users text-indigo-500 text-2xl" aria-hidden="true"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-4">Liderança de Equipes</h3>
-                            <p class="text-gray-600">
-                                Construção e mentoria de equipes multidisciplinares de alto desempenho.
-                            </p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" aria-labelledby="contact-heading"
-                class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-purple-50">
-                <div class="max-w-5xl mx-auto">
-                    <h2 id="contact-heading" class="text-3xl font-bold mb-16 text-center">Vamos Conectar</h2>
-
-                    <div class="flex flex-col lg:flex-row gap-12">
-                        <div class="w-full lg:w-1/2">
-                            <form class="space-y-6" id="contact-form" aria-labelledby="form-heading">
-                                <h3 id="form-heading" class="sr-only">Formulário de Contato</h3>
-
-                                <div>
-                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nome</label>
-                                    <input type="text" id="name" name="name" autocomplete="name" required
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                                        aria-required="true">
-                                </div>
-
-                                <div>
-                                    <label for="email"
-                                        class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                    <input type="email" id="email" name="email" autocomplete="email" required
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                                        aria-required="true">
-                                </div>
-
-                                <div>
-                                    <label for="message"
-                                        class="block text-sm font-medium text-gray-700 mb-2">Mensagem</label>
-                                    <textarea id="message" name="message" rows="5" required
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-y"
-                                        aria-required="true"></textarea>
-                                </div>
-
-                                <div class="flex items-center">
-                                    <input type="checkbox" id="consent" name="consent" required
-                                        class="h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300 rounded"
-                                        aria-required="true">
-                                    <label for="consent" class="ml-2 block text-sm text-gray-600">
-                                        Concordo com o processamento dos meus dados para contato
-                                    </label>
-                                </div>
-
-                                <button type="submit"
-                                    class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity flex justify-center items-center">
-                                    <span>Enviar Mensagem</span>
-                                    <i class="fas fa-paper-plane ml-2"></i>
-                                </button>
-                            </form>
-                        </div>
-
-                        <div class="w-full lg:w-1/2">
-                            <div class="bg-white p-8 rounded-xl shadow-sm h-full">
-                                <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
-                                <div class="space-y-6">
-                                    <div class="flex items-start">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
-                                            <i class="fas fa-envelope text-blue-500"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-lg">Email</h4>
-                                            <a href="mailto:contact@igorrodrigues.com"
-                                                class="text-gray-600 hover:text-blue-500 transition-colors"
-                                                aria-label="Enviar email para contact@igorrodrigues.com">
-                                                contact@igorrodrigues.com
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex items-start">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4 flex-shrink-0">
-                                            <i class="fab fa-linkedin-in text-purple-500"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-lg">LinkedIn</h4>
-                                            <a href="https://linkedin.com/in/igorfarodrigues" target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="text-gray-600 hover:text-blue-500 transition-colors">
-                                                linkedin.com/in/igorfarodrigues
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex items-start">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4 flex-shrink-0">
-                                            <i class="fas fa-map-marker-alt text-green-500"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-lg">Localização</h4>
-                                            <p class="text-gray-600">São Paulo, Brasil</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="mt-8 pt-8 border-t border-gray-200">
-                                        <h4 class="font-medium text-lg mb-4">Siga nas redes sociais</h4>
-                                        <div class="flex space-x-4">
-                                            <a href="https://linkedin.com/in/igorfarodrigues" target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-100 hover:text-blue-500 transition-colors"
-                                                aria-label="LinkedIn">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                            <a href="https://twitter.com/igorfarodrigues" target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-100 hover:text-blue-500 transition-colors"
-                                                aria-label="Twitter">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                            <a href="https://github.com/igorfarodrigues" target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-100 hover:text-blue-500 transition-colors"
-                                                aria-label="GitHub">
-                                                <i class="fab fa-github"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                    
+                    <p class="text-gray-700 leading-relaxed">
+                        Liderei estratégia e execução de produtos digitais para as plataformas globais de e-commerce e digital da Natura.
+                    </p>
+                </article>
+                
+                <!-- Cargo anterior 2 -->
+                <article class="experience-item">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Diretor de Produto</h3>
+                            <div class="flex items-center mb-4">
+                                <span class="font-medium">Movile</span>
+                                <span class="mx-2 text-gray-400">•</span>
+                                <time datetime="2016" class="text-gray-600">2016 - 2018</time>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
+                    
+                    <p class="text-gray-700 leading-relaxed">
+                        Dirigi o desenvolvimento de produtos para plataformas móveis atendendo milhões de usuários em toda a América Latina.
+                    </p>
+                </article>
+            </div>
+        </section>
 
-        <!-- Footer -->
-        <footer class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900 text-gray-400">
-            <div class="max-w-5xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="text-xl font-bold gradient-text mb-6 md:mb-0">Igor Rodrigues</div>
-                    <nav class="flex space-x-8" aria-label="Footer navigation">
-                        <a href="#about" class="hover:text-white transition-colors">Sobre</a>
-                        <a href="#experience" class="hover:text-white transition-colors">Experiência</a>
-                        <a href="#skills" class="hover:text-white transition-colors">Habilidades</a>
-                        <a href="#contact" class="hover:text-white transition-colors">Contato</a>
-                    </nav>
-                </div>
-                <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-                    <p>© 2025 Igor Rodrigues. Todos os direitos reservados.</p>
-                    <div class="mt-4 md:mt-0">
-                        <a href="#" class="text-sm text-gray-500 hover:text-gray-300 transition-colors">Política de
-                            Privacidade</a>
+        <div class="divider"></div>
+        
+        <!-- Habilidades -->
+        <section id="skills" class="mb-16 md:mb-24 fade-in delay-3">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">Competências</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Produto -->
+                <article class="skill-item">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-box-open text-accent-500 mr-3"></i>
+                        <h3 class="text-lg font-bold">Estratégia de Produto</h3>
                     </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Definição de visão de produto, roadmap e planos de execução alinhados aos objetivos de negócio e necessidades dos usuários.
+                    </p>
+                </article>
+
+                <!-- Tecnologia -->
+                <article class="skill-item">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-server text-accent-500 mr-3"></i>
+                        <h3 class="text-lg font-bold">Liderança em Tecnologia</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Construção de arquiteturas escaláveis, soluções em nuvem e equipes de engenharia de alto desempenho.
+                    </p>
+                </article>
+
+                <!-- Digital -->
+                <article class="skill-item">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-globe text-accent-500 mr-3"></i>
+                        <h3 class="text-lg font-bold">Transformação Digital</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Condução de mudança organizacional através da adoção de tecnologia e inovação digital.
+                    </p>
+                </article>
+
+                <!-- Agile -->
+                <article class="skill-item">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-tasks text-accent-500 mr-3"></i>
+                        <h3 class="text-lg font-bold">Metodologias Ágeis</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Implementação de frameworks Scrum, Kanban e SAFe para melhorar a eficiência de entrega.
+                    </p>
+                </article>
+
+                <!-- Data -->
+                <article class="skill-item">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-chart-line text-accent-500 mr-3"></i>
+                        <h3 class="text-lg font-bold">Decisões Data-Driven</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Alavancagem de analytics e insights para informar estratégias de produto e negócio.
+                    </p>
+                </article>
+
+                <!-- Team -->
+                <article class="skill-item">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-users text-accent-500 mr-3"></i>
+                        <h3 class="text-lg font-bold">Liderança de Equipes</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Construção e mentoria de equipes multidisciplinares de alto desempenho.
+                    </p>
+                </article>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- Contato -->
+        <section id="contact" class="mb-16 md:mb-24 fade-in delay-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8">Contato</h2>
+            
+            <div class="space-y-6 mb-10">
+                <div class="flex items-center">
+                    <i class="fas fa-envelope text-accent-500 mr-3 w-5 text-center"></i>
+                    <a href="mailto:contact@igorrodrigues.com" class="hover:text-accent-500">contact@igorrodrigues.com</a>
+                </div>
+                <div class="flex items-center">
+                    <i class="fab fa-linkedin-in text-accent-500 mr-3 w-5 text-center"></i>
+                    <a href="https://linkedin.com/in/igorfarodrigues" target="_blank" rel="noopener noreferrer" class="hover:text-accent-500">linkedin.com/in/igorfarodrigues</a>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-map-marker-alt text-accent-500 mr-3 w-5 text-center"></i>
+                    <span>São Paulo, Brasil</span>
                 </div>
             </div>
-        </footer>
-    </div>
+            
+            <div class="mt-10">
+                <h3 class="text-xl font-bold mb-6">Envie uma mensagem</h3>
+                <form id="contact-form" class="space-y-5">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-accent-500 focus:border-accent-500">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-accent-500 focus:border-accent-500">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-accent-500 focus:border-accent-500 resize-y"></textarea>
+                    </div>
+                    
+                    <button type="submit"
+                        class="px-6 py-3 bg-accent-500 text-white rounded-md hover:bg-accent-600 transition-colors">
+                        Enviar mensagem
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FAQ - Schema.org para IA -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Quais são as principais áreas de expertise de Igor Rodrigues?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Igor Rodrigues é especialista em estratégia de produto, transformação digital, metodologias ágeis, liderança de equipes tecnológicas, arquiteturas escaláveis e decisões data-driven."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Qual é o cargo atual de Igor Rodrigues?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Atualmente, Igor Rodrigues é Chief Product & Technology Officer no Grupo Boticário, onde lidera transformação digital, estratégia de produto e inovação tecnológica."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Como entrar em contato com Igor Rodrigues?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "É possível entrar em contato através do email contact@igorrodrigues.com ou pelo perfil do LinkedIn: linkedin.com/in/igorfarodrigues."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-gray-200">
+        <div class="container">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-600 mb-4 md:mb-0">
+                    © 2025 Igor Rodrigues — todos os direitos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-sm text-gray-600 hover:text-accent-500 transition-colors">Privacidade</a>
+                    <a href="https://linkedin.com/in/igorfarodrigues" target="_blank" rel="noopener noreferrer" 
+                        class="text-sm text-gray-600 hover:text-accent-500 transition-colors">LinkedIn</a>
+                    <a href="https://twitter.com/igorfarodrigues" target="_blank" rel="noopener noreferrer"
+                        class="text-sm text-gray-600 hover:text-accent-500 transition-colors">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Gerenciamento do menu móvel
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuButton = document.querySelector('button[aria-controls="mobile-menu"]');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuPanel = mobileMenu.querySelector('div');
-            const closeButton = mobileMenu.querySelector('button');
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-
-            // Função para abrir o menu
-            function openMobileMenu() {
-                mobileMenu.classList.remove('opacity-0', 'invisible');
-                mobileMenu.classList.add('opacity-100', 'visible');
-                mobileMenuPanel.classList.remove('translate-x-full');
-                mobileMenuPanel.classList.add('translate-x-0');
-                mobileMenuButton.setAttribute('aria-expanded', 'true');
-
-                // Previne a rolagem do body
-                document.body.style.overflow = 'hidden';
-
-                // Foca no botão de fechar para acessibilidade
-                setTimeout(() => {
-                    closeButton.focus();
-                }, 100);
-            }
-
-            // Função para fechar o menu
-            function closeMobileMenu() {
-                mobileMenuPanel.classList.remove('translate-x-0');
-                mobileMenuPanel.classList.add('translate-x-full');
-
-                setTimeout(() => {
-                    mobileMenu.classList.remove('opacity-100', 'visible');
-                    mobileMenu.classList.add('opacity-0', 'invisible');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-
-                    // Restaura a rolagem do body
-                    document.body.style.overflow = '';
-                }, 300);
-            }
-
-            // Adiciona eventos
-            mobileMenuButton.addEventListener('click', openMobileMenu);
-            closeButton.addEventListener('click', closeMobileMenu);
-
-            // Fecha o menu ao clicar em um link
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', closeMobileMenu);
-            });
-
-            // Fecha o menu ao clicar fora dele
-            mobileMenu.addEventListener('click', function (e) {
-                if (e.target === mobileMenu) {
-                    closeMobileMenu();
-                }
-            });
-
-            // Fecha o menu com Escape
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && mobileMenuButton.getAttribute('aria-expanded') === 'true') {
-                    closeMobileMenu();
-                }
-            });
-        });
-
         // Rolagem suave para âncoras
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -624,12 +541,8 @@
                 const targetElement = document.querySelector(targetId);
 
                 if (targetElement) {
-                    // Compensa o header fixo
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
                     window.scrollTo({
-                        top: targetPosition,
+                        top: targetElement.offsetTop - 30,
                         behavior: 'smooth'
                     });
                 }
@@ -642,23 +555,20 @@
             contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
 
-                // Normalmente aqui haveria um código para enviar o formulário
-                // via AJAX para um backend
-
                 // Simula envio bem-sucedido
                 const button = contactForm.querySelector('button[type="submit"]');
-                const originalText = button.innerHTML;
+                const originalText = button.textContent;
 
                 button.disabled = true;
-                button.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Enviando...';
+                button.textContent = 'Enviando...';
 
                 setTimeout(() => {
                     contactForm.reset();
-                    button.innerHTML = '<i class="fas fa-check"></i> Enviado!';
+                    button.textContent = 'Mensagem enviada!';
 
                     setTimeout(() => {
                         button.disabled = false;
-                        button.innerHTML = originalText;
+                        button.textContent = originalText;
                     }, 2000);
                 }, 1500);
             });

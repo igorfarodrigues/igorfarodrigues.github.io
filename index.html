@@ -131,25 +131,6 @@
             border-color: var(--accent-color);
         }
 
-        /* Imagem de perfil */
-        .avatar {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin: 0 auto 2rem;
-            display: block;
-        }
-
-        @media (min-width: 768px) {
-            .avatar {
-                width: 220px;
-                height: 220px;
-            }
-        }
-
         /* Conteúdo principal */
         .container {
             width: 100%;
@@ -250,6 +231,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Rede Profissional -->
                 <article class="skill-item">
+                <a href="https://linkedin.com/in/igorfarodrigues" target="_blank" rel="noopener noreferrer">
                     <div class="flex items-center mb-3">
                         <i class="fab fa-linkedin-in text-accent-500 mr-3"></i>
                         <h3 class="text-lg font-bold">LinkedIn</h3>
@@ -257,10 +239,13 @@
                     <p class="text-gray-700 leading-relaxed">
                         Compartilho meu desenvolvimento profissional e algumas lições que aprendi sobre a área de TI.
                     </p>
+                </a>
                 </article>
 
                 <!-- Tecnologia -->
                 <article class="skill-item">
+                  <a href="https://github.com/igorfarodrigues" target="_blank" rel="noopener noreferrer">
+                        <div class="flex items
                     <div class="flex items-center mb-3">
                         <i class="fab fa-github text-accent-500 mr-3"></i>
                         <h3 class="text-lg font-bold">GitHub</h3>
@@ -269,6 +254,7 @@
                         Projetos pessoais que faço como hobby ou por puro aprendizado e estudo. Descubra qual tecnologia estou aplicando,
                         talvez você goste.
                     </p>
+                  </a>  
                 </article>
 
                 <!-- Digital -->

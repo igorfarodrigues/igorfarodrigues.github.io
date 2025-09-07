@@ -1,0 +1,97 @@
+/* Tema claro */
+:root,
+[data-theme="light"] {
+    --text-color: #111827;
+    --bg-color: #ffffff;
+    --bg-accent: #f9fafb;
+    --border-color: #e5e7eb;
+    --accent-color: #1DB954;
+    --header-bg: #ffffff;
+    --card-bg: #ffffff;
+    --footer-bg: #ffffff;
+    --input-bg: #ffffff;
+    --input-border: #e5e7eb;
+    --skill-item-bg: #ffffff;
+    --newsletter-bg: #f9fafb;
+}
+
+[data-theme="dark"] {
+    --text-color: #e5e7eb;
+    --bg-color: #111827;
+    --bg-accent: #1f2937;
+    --border-color: #374151;
+    --accent-color: #1DB954;
+    --header-bg: #1f2937;
+    --card-bg: #1f2937;
+    --footer-bg: #1f2937;
+    --input-bg: #374151;
+    --input-border: #4b5563;
+    --skill-item-bg: #1f2937;
+    --newsletter-bg: #1f2937;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    text-rendering: optimizeLegibility;
+}
+*:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 3rem 0;
+}
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+a:hover {
+    border-color: var(--accent-color);
+}
+.container {
+    width: 100%;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+.experience-item:not(:last-child) {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+.skill-item {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.skill-item:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+}

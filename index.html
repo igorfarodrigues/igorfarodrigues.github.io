@@ -113,19 +113,20 @@
         Pular para o conteúdo principal
     </a>
 
+
     <main id="main-content" class="container py-16 md:py-24">
-        <!-- Seção de Perfil / Hero -->
+        <!-- Seção de Perfil / Hero centralizada -->
         <section id="about" class="mb-16 md:mb-24 fade-in">
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+            <div class="flex flex-col items-center justify-center gap-8">
                 <!-- Foto de perfil (opcional) -->
                 <div
-                    class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden bg-gray-100 flex-shrink-0 flex items-center justify-center">
-                    <!-- Se tiver uma foto, descomente e use o código abaixo -->
-                    <!-- <img src="caminho/para/sua/foto.jpg" alt="Igor Rodrigues" class="w-full h-full object-cover"> -->
-                    <span class="text-4xl md:text-6xl text-accent-500">IR</span>
+                    class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <span class="text-4xl md:text-6xl text-accent-500"> IR
+                        <!-- <img src="profile.jpg" alt="Foto de Igor Rodrigues"
+                            class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover shadow-lg border-4 border-accent-500"> -->
+                    </span>
                 </div>
-
-                <div class="text-center md:text-left">
+                <div class="text-center">
                     <h1 class="text-3xl md:text-5xl font-bold mb-4 text-balance">Igor Rodrigues</h1>
                     <p class="text-xl md:text-2xl text-gray-600 mb-4 max-w-xl leading-relaxed text-balance">
                         Desenvolvedor de Software & Indie Hacker
@@ -134,8 +135,7 @@
                         Vou fazer você se apaixonar por programação! Criando coisas com tecnologia, SaaS, AI Agents,
                         Apps e AI Services.
                     </p>
-
-                    <div class="flex justify-center md:justify-start space-x-5 pt-2">
+                    <div class="flex justify-center space-x-5 pt-2">
                         <a href="https://linkedin.com/in/igorfarodrigues" target="_blank" rel="noopener noreferrer"
                             class="inline-flex items-center text-gray-600 hover:text-accent-600 transition-colors"
                             aria-label="LinkedIn">
@@ -154,8 +154,13 @@
                     </div>
                 </div>
             </div>
+            <!-- Seta animada apontando para a newsletter -->
+            <div class="flex flex-col items-center mt-10">
+                <!-- <span class="animate-bounce text-accent-500 text-4xl" aria-hidden="true">&#8595;</span> -->
+                <a href="#newsletter" class="animate-bounce text-accent-500 text-4xl" aria-hidden="true">&#8595;</a>
+                <span class="sr-only">Role para a newsletter</span>
+            </div>
         </section>
-
         <div class="divider"></div>
 
         <!-- Seção de Newsletter -->
@@ -166,15 +171,12 @@
                     Receba as notícias mais importantes de tecnologia formatadas para rápido consumo. Sem spam, apenas
                     conteúdo relevante para quem trabalha com programação e tecnologia.
                 </p>
-
                 <form class="max-w-md mx-auto" action="#" method="post" id="newsletter-form">
                     <div class="flex flex-col sm:flex-row gap-3">
                         <input type="email" name="email" placeholder="Seu melhor e-mail" required
                             class="flex-grow px-4 py-3 rounded-md border border-gray-300 focus:border-accent-500 focus:ring-2 focus:ring-accent-200 transition-colors">
                         <button type="submit"
-                            class="bg-accent-600 hover:bg-accent-700 text-white font-medium py-3 px-6 rounded-md transition-colors">
-                            Inscrever-se
-                        </button>
+                            class="bg-accent-600 hover:bg-accent-700 text-white font-medium py-3 px-6 rounded-md transition-colors">Inscrever-se</button>
                     </div>
                     <p class="text-xs text-gray-500 mt-3">
                         Ao se inscrever, você concorda com nossa política de privacidade. Você pode cancelar a qualquer
@@ -185,97 +187,6 @@
         </section>
     </main>
 
-    <!-- FAQ - Schema.org para IA -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Quais são as principais áreas de expertise de Igor Rodrigues?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Igor Rodrigues tem 5 anos de experiência como Engenheiro de Software, com sólida formação em desenvolvimento Backend, especializado em sistemas distribuídos, estruturas escaláveis e arquiteturas de comunicação (API REST e gRPC). Suas principais tecnologias incluem Kotlin, Python, Golang (Go), JavaScript e SQL."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Quais tipos de projetos Igor Rodrigues desenvolve?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Igor Rodrigues desenvolve diversos tipos de projetos, incluindo assistentes virtuais com IA, gateways de API, aplicativos de produtividade e plataformas Micro-SaaS. Ele trabalha com tecnologias como Python, NLP, AI, Golang, Microservices, REST, Kotlin, Android, Firebase, JavaScript, Node.js e React."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Como posso me manter atualizado sobre o trabalho de Igor Rodrigues?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Você pode se inscrever na newsletter de Igor Rodrigues para receber as notícias mais importantes de tecnologia formatadas para rápido consumo. Além disso, pode seguir seu perfil no LinkedIn (linkedin.com/in/igorfarodrigues) e acompanhar seus projetos no GitHub (github.com/igorfarodrigues)."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Como entrar em contato com Igor Rodrigues?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "É possível entrar em contato através do email contato@igorfarodrigues.com ou pelo perfil do LinkedIn: linkedin.com/in/igorfarodrigues."
-                }
-            }
-        ]
-    }
-    </script>
-
-    <!-- WebSite Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Igor Rodrigues | Desenvolvedor de Software & Indie Hacker",
-        "url": "https://igorfarodrigues.github.io",
-        "description": "Site pessoal de Igor Rodrigues, desenvolvedor de software e indie hacker, especializado em Kotlin, Python, Golang, JavaScript e desenvolvimento de SaaS, AI Agents, Apps e AI Services.",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://igorfarodrigues.github.io/?s={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
-
-    <!-- BreadcrumbList Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://igorfarodrigues.github.io"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Sobre",
-                "item": "https://igorfarodrigues.github.io#about"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Projetos",
-                "item": "https://igorfarodrigues.github.io#projects"
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "name": "Newsletter",
-                "item": "https://igorfarodrigues.github.io#newsletter"
-            }
-        ]
-    }
-    </script>
 
     <!-- Footer -->
     <footer class="py-10 border-t border-gray-200">
